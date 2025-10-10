@@ -174,7 +174,7 @@ class OptimizationComparison:
             return 2 * (x - 2)
         
         # 测试不同学习率
-        learning_rates = [0.01, 0.1, 0.5, 1.0, 1.5]
+        learning_rates = [0.01, 0.1, 0.5, 1.0]
         colors = ['blue', 'green', 'red', 'purple', 'orange']
         
         plt.figure(figsize=(15, 5))
