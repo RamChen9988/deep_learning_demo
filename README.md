@@ -51,9 +51,11 @@ deep_learning_demo/
 ├── models/              # 神经网络模型
 │   ├── simple_nn.py    # 简单全连接网络
 │   └── __init__.py
+│   └── manual_layers.py               # 手动实现各层
 ├── utils/               # 工具函数
 │   ├── data_loader.py  # 数据加载器
 │   ├── visualization.py # 可视化工具
+│   └── gradient_utils.py              # 梯度工具函数
 │   └── __init__.py
 ├── examples/            # 演示示例
 │   ├── 01_mnist_basic.py          # 基础MNIST演示
@@ -61,6 +63,9 @@ deep_learning_demo/
 │   ├── 04_supervised_learning.py  # 监督学习完整流程
 │   ├── 05_optimization_comparison.py # 优化算法对比
 │   └── 06_fraud_detection_demo.py # 欺诈检测案例
+│   ├── 07_backpropagation_demo.py     # 反向传播手动实现
+│   ├── 08_layer_relationships.py      # 神经网络层关系演示
+│   └── 09_sentiment_analysis_demo.py  # 情感分析实战案例
 ├── data/                # 数据集目录
 ├── requirements.txt     # Python依赖包
 ├── install.bat         # Windows安装脚本
@@ -71,6 +76,28 @@ deep_learning_demo/
 
 ## 使用说明
 
+### 新增功能
+
+examples/07_backpropagation_demo.py：手动实现反向传播的演示，包括各层的实现和训练一个简单模型。
+
+examples/08_autograd_demo.py：使用PyTorch自动求导实现相同模型，对比手动实现。
+
+models/manual_nn.py：手动实现的神经网络层。
+
+utils/backprop_utils.py：反向传播相关的工具函数，如梯度检查。
+
+同时，我们将使用MNIST数据集，因为我们已经有了数据加载的代码。
+
+注意：为了教学清晰，我们将手动实现一个简单的两层网络（全连接层+ReLU+全连接层+Softmax）并进行训练。
+
+步骤：
+
+1. 实现手动神经网络层（Linear、ReLU、Softmax）及其反向传播。
+2. 构建一个两层网络，并实现前向和反向传播。
+3. 使用梯度下降训练模型，并在MNIST上进行测试。
+4. 使用PyTorch的自动求导实现相同模型，比较结果。
+
+-------
 ### 基础演示
 运行MNIST手写数字识别和XOR问题演示：
 ```bash

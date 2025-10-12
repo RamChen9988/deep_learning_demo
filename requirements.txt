@@ -28,3 +28,6 @@ ipywidgets>=7.6.0
 black>=21.0.0
 flake8>=3.9.0
 pytest>=6.2.0
+
+# 自然语言处理
+nltk>=3.6.2
