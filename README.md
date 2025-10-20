@@ -1,29 +1,3 @@
-## 新增内容 - 第五课第一、二学时扩展
-
-### 新增演示文件
-
-#### 1. 优化算法进阶 (`examples/10_optimization_advanced.py`)
-- **动量优化演示**: 对比不同动量参数的效果
-- **自适应优化器**: AdaGrad、RMSprop、Adam算法对比
-- **超参数敏感性**: 学习率对训练效果的影响分析
-
-#### 2. 权重初始化 (`examples/11_weight_initialization.py`)
-- **初始化方法对比**: Xavier、He、全零等方法的性能比较
-- **激活值分布分析**: 展示不同初始化对网络激活的影响
-- **问题诊断**: 识别和解决初始化相关问题
-
-#### 3. 梯度问题诊断 (`examples/12_gradient_problems.py`)
-- **梯度消失演示**: 深度网络中的梯度衰减问题
-- **梯度爆炸演示**: 大权重导致的训练不稳定
-- **解决方案对比**: 梯度裁剪、初始化调整等方法效果
-
-### 教学对应关系
-
-#### PPT幻灯片2 - 动量法
-```python
-# 对应代码：10_optimization_advanced.py 中的 demo_momentum_optimization()
-debug_momentum_demo()  # 取消注释运行
-
 # 深度学习演示项目
 
 一个用于教学和演示的深度学习项目，包含多种神经网络模型、优化算法对比和实际业务场景应用。
@@ -33,7 +7,7 @@ debug_momentum_demo()  # 取消注释运行
 - 🧠 **基础神经网络演示**: XOR问题、MNIST手写数字识别
 - 📊 **监督学习完整流程**: 回归问题、分类问题的端到端解决方案
 - ⚡ **优化算法对比**: SGD、Adam、RMSprop等优化器性能比较
-- 🎯 **实际业务应用**: 信用卡欺诈检测系统
+- 🎯 **实际业务应用**: 信用卡欺诈检测、情感分析系统
 - 📈 **可视化工具**: 训练过程可视化、决策边界、ROC曲线等
 - 🎥 **实时演示**: 摄像头实时数字识别
 - 📚 **教学友好**: 代码注释详细，适合学习
@@ -74,84 +48,115 @@ pip install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple/
 
 ```
 deep_learning_demo/
-├── models/              # 神经网络模型
-│   ├── simple_nn.py    # 简单全连接网络
+├── models/                          # 神经网络模型
+│   ├── simple_nn.py                # 简单全连接网络
+│   ├── manual_layers.py            # 手动实现各层
+│   ├── optimization_models.py      # 优化算法模型
 │   └── __init__.py
-│   └── manual_layers.py               # 手动实现各层
-├── utils/               # 工具函数
-│   ├── data_loader.py  # 数据加载器
-│   ├── visualization.py # 可视化工具
-│   └── gradient_utils.py              # 梯度工具函数
+├── utils/                           # 工具函数
+│   ├── data_loader.py              # 数据加载器
+│   ├── visualization.py            # 可视化工具
+│   ├── gradient_utils.py           # 梯度工具函数
+│   ├── optimization_utils.py       # 优化工具函数
 │   └── __init__.py
-├── examples/            # 演示示例
-│   ├── 01_mnist_basic.py          # 基础MNIST演示
-│   ├── 03_real_time_demo.py       # 实时摄像头演示
-│   ├── 04_supervised_learning.py  # 监督学习完整流程
-│   ├── 05_optimization_comparison.py # 优化算法对比
-│   └── 06_fraud_detection_demo.py # 欺诈检测案例
-│   ├── 07_backpropagation_demo.py     # 反向传播手动实现
-│   ├── 08_layer_relationships.py      # 神经网络层关系演示
-│   └── 09_sentiment_analysis_demo.py  # 情感分析实战案例
-├── data/                # 数据集目录
-├── requirements.txt     # Python依赖包
-├── install.bat         # Windows安装脚本
-├── install.sh          # Linux/macOS安装脚本
-├── check_environment.py # 环境检查脚本
-└── README.md           # 项目说明
+├── examples/                        # 演示示例
+│   ├── D01_mnist_basic.py          # 基础MNIST演示
+│   ├── D03_real_time_demo.py       # 实时摄像头演示
+│   ├── D04_supervised_learning.py  # 监督学习完整流程
+│   ├── D05_optimization_comparison.py # 优化算法对比
+│   ├── D06_fraud_detection_demo.py # 欺诈检测案例
+│   ├── D07_backpropagation_demo.py # 反向传播手动实现
+│   ├── D08_layer_relationships.py  # 神经网络层关系演示
+│   ├── D09_sentiment_analysis_demo.py # 情感分析实战案例
+│   ├── D10_optimization_advanced.py # 优化算法进阶
+│   ├── D10_sentiment_analysis_demo_1.py # 情感分析演示1
+│   ├── D10_sentiment_analysis_demo_2.py # 情感分析演示2
+│   ├── D10_sentiment_analysis_demo_3.py # 情感分析演示3
+│   ├── D10_sentiment_analysis_demo_4.py # 情感分析演示4
+│   ├── D10_sentiment_analysis_demo_4_interactive.py # 交互式情感分析
+│   ├── D10_sentiment_analysis_improvements_analysis.md # 改进分析文档
+│   ├── D10__build_dataset_100K.py  # 构建100K数据集
+│   ├── D11_weight_initialization.py # 权重初始化演示
+│   ├── D12_gradient_problems.py    # 梯度问题诊断
+│   └── D10_test*.py                # 测试文件
+├── sentiment_model/                 # 情感分析模型
+│   ├── model.h5                    # 训练好的模型
+│   ├── tokenizer.pkl               # 分词器
+│   └── label_mapping.pkl           # 标签映射
+├── sentiment_model_fixed/           # 修复版情感分析模型
+├── sentiment_model_pretrained/      # 预训练情感分析模型
+├── data/                            # 数据集目录
+│   ├── chinese_emotion_analysis_100k.csv # 中文情感分析数据集
+│   ├── Simplified_Chinese_Multi-Emotion_Dialogue_Dataset.csv # 中文多情感对话数据集
+│   └── mnist/                       # MNIST数据集
+├── requirements.txt                 # Python依赖包
+├── install.bat                      # Windows安装脚本
+├── install.sh                       # Linux/macOS安装脚本
+├── check_environment.py             # 环境检查脚本
+├── diagnose_model.py                # 模型诊断工具
+└── README.md                        # 项目说明
 ```
 
 ## 使用说明
 
-### 新增功能
-
-examples/07_backpropagation_demo.py：手动实现反向传播的演示，包括各层的实现和训练一个简单模型。
-
-examples/08_autograd_demo.py：使用PyTorch自动求导实现相同模型，对比手动实现。
-
-models/manual_nn.py：手动实现的神经网络层。
-
-utils/backprop_utils.py：反向传播相关的工具函数，如梯度检查。
-
-同时，我们将使用MNIST数据集，因为我们已经有了数据加载的代码。
-
-注意：为了教学清晰，我们将手动实现一个简单的两层网络（全连接层+ReLU+全连接层+Softmax）并进行训练。
-
-步骤：
-
-1. 实现手动神经网络层（Linear、ReLU、Softmax）及其反向传播。
-2. 构建一个两层网络，并实现前向和反向传播。
-3. 使用梯度下降训练模型，并在MNIST上进行测试。
-4. 使用PyTorch的自动求导实现相同模型，比较结果。
-
--------
 ### 基础演示
 运行MNIST手写数字识别和XOR问题演示：
 ```bash
-python examples/01_mnist_basic.py
+python examples/D01_mnist_basic.py
 ```
 
 ### 实时演示
 运行摄像头实时数字识别演示：
 ```bash
-python examples/03_real_time_demo.py
+python examples/D03_real_time_demo.py
 ```
 
 ### 监督学习完整流程
 运行回归和分类问题的完整演示：
 ```bash
-python examples/04_supervised_learning.py
+python examples/D04_supervised_learning.py
 ```
 
 ### 优化算法对比
 比较不同优化算法的性能：
 ```bash
-python examples/05_optimization_comparison.py
+python examples/D05_optimization_comparison.py
 ```
 
 ### 欺诈检测案例
 运行信用卡欺诈检测系统演示：
 ```bash
-python examples/06_fraud_detection_demo.py
+python examples/D06_fraud_detection_demo.py
+```
+
+### 情感分析系统
+运行中文情感分析演示：
+```bash
+python examples/D09_sentiment_analysis_demo.py
+```
+
+### 交互式情感分析
+运行交互式情感分析演示：
+```bash
+python examples/D10_sentiment_analysis_demo_4_interactive.py
+```
+
+### 优化算法进阶
+运行高级优化算法演示：
+```bash
+python examples/D10_optimization_advanced.py
+```
+
+### 权重初始化演示
+运行权重初始化方法对比：
+```bash
+python examples/D11_weight_initialization.py
+```
+
+### 梯度问题诊断
+运行梯度问题诊断演示：
+```bash
+python examples/D12_gradient_problems.py
 ```
 
 ## 功能说明
@@ -173,13 +178,46 @@ python examples/06_fraud_detection_demo.py
 
 ### 4. 实际业务应用
 - **欺诈检测系统**: 模拟信用卡交易数据，检测异常交易
+- **情感分析系统**: 中文文本情感分类，支持多情感类别
 - **不平衡数据处理**: 使用加权采样和损失函数处理类别不平衡
 - **业务指标分析**: 精确率、召回率、F1分数、AUC等指标
-- **成本效益分析**: 计算欺诈检测系统的经济效益
 
 ### 5. 实时演示
 - **摄像头数字识别**: 使用摄像头实时识别手写数字
 - **交互式界面**: 实时显示识别结果和置信度
+
+### 6. 高级主题
+- **反向传播手动实现**: 深入理解神经网络训练原理
+- **权重初始化方法**: Xavier、He等初始化方法对比
+- **梯度问题诊断**: 梯度消失、梯度爆炸问题及解决方案
+- **优化算法进阶**: 动量优化、自适应优化器对比
+
+## 新增内容 - 第五课第一、二学时扩展
+
+### 新增演示文件
+
+#### 1. 优化算法进阶 (`examples/D10_optimization_advanced.py`)
+- **动量优化演示**: 对比不同动量参数的效果
+- **自适应优化器**: AdaGrad、RMSprop、Adam算法对比
+- **超参数敏感性**: 学习率对训练效果的影响分析
+
+#### 2. 权重初始化 (`examples/D11_weight_initialization.py`)
+- **初始化方法对比**: Xavier、He、全零等方法的性能比较
+- **激活值分布分析**: 展示不同初始化对网络激活的影响
+- **问题诊断**: 识别和解决初始化相关问题
+
+#### 3. 梯度问题诊断 (`examples/D12_gradient_problems.py`)
+- **梯度消失演示**: 深度网络中的梯度衰减问题
+- **梯度爆炸演示**: 大权重导致的训练不稳定
+- **解决方案对比**: 梯度裁剪、初始化调整等方法效果
+
+### 教学对应关系
+
+#### PPT幻灯片2 - 动量法
+```python
+# 对应代码：D10_optimization_advanced.py 中的 demo_momentum_optimization()
+debug_momentum_demo()  # 取消注释运行
+```
 
 ## 依赖包说明
 
@@ -191,6 +229,8 @@ python examples/06_fraud_detection_demo.py
 - `matplotlib`: 数据可视化
 - `seaborn`: 高级数据可视化
 - `opencv-python`: 图像处理和摄像头访问
+- `tensorflow`: 深度学习框架（用于情感分析）
+- `keras`: 高级神经网络API
 
 ### 可选依赖
 - `jupyter`: 交互式笔记本支持
