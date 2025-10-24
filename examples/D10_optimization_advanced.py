@@ -274,10 +274,10 @@ class OptimizationAdvancedDemo:
     
     def _plot_optimization_comparison(self, optimizers_config, title):
         """绘制优化算法对比图"""
-        fig, ((ax1, ax2), (ax3, ax4)) = plt.subplots(2, 2, figsize=(15, 10))
+        # 设置全局字体以支持中文显示
+        plt.rcParams['font.family'] = ['SimHei', 'DejaVu Sans', 'Arial', 'sans-serif']
+        plt.rcParams['axes.unicode_minus'] = False
         
-        # 损失曲线
-        ax1.set_title(f'{title} - 训练损失', fontproperties={'family': 'SimHei'})
         for opt_name, config in optimizers_config.items():
             ax1.plot(config['losses'], color=config['color'], label=opt_name, linewidth=2)
         ax1.set_xlabel('Epoch', fontproperties={'family': 'SimHei'})
