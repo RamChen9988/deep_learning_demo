@@ -18,7 +18,7 @@ import matplotlib.pyplot as plt
 plt.rcParams['font.family'] = ['SimHei', 'DejaVu Sans', 'Arial']
 plt.rcParams['axes.unicode_minus'] = False
 
-class BaselineTraine
+class BaselineTrainer:
     def __init__(self):
         # 设备配置 - 优先使用GPU
         self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
