@@ -4,10 +4,15 @@
 *.pkl
 *.pt
 *.model
+save_model/
+sentiment_model/
+sentiment_model_fixed/
+sentiment_model_pretrained/
 
 # Data files
 data/
 !data/README.md
+testdata/
 
 # Python cache
 __pycache__/
